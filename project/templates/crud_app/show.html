@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+{% block title %}
+    <title>show page</title>
+{% endblock %}
+{% block content %}
+<table class=" m-auto mt-5 border border-3  col-8 text-center">
+     <thead>
+        <tr>
+            <th>{{ ID }}</th>
+            <th>{{ FIRST_NAME }}</th>
+            <th>{{ LAST_NAME }}</th>
+            <th>{{ COMPANY }}</th>
+            <th>{{ SALARY }}</th>
+            <th>{{ JOINING_DATE }}</th>
+            <th>{{ SALARY }}</th>
+            <th>{{ MOBILE }}</th>
+            <th COLSPAN="2">{{ ACTION }}</th>
+        </tr>
+     </thead>
+     <tbody>
+            {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.first_name }}</td>
+                    <td>{{ employee.last_name }}</td>
+                    <td>{{ employee.company }}</td>
+                    <td>{{ employee.salary }}</td>
+                    <td>{{ employee.date_of_Joining }}</td>
+                    <td>{{ employee.city }}</td>
+                    <td>{{ employee.mobile }}</td>
+                    <td>
+                        <a href="{% url 'update_url' employee.id %}">
+                            <button><i class="bi bi-pencil-square"></i>&nbspUpdate</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete_url' employee.id %}">
+                                    <button><i class="bi bi-pencil-square"></i>&nbspCnacel</button>
+                        </a>
+                    </td>
+                {% endfor %}
+            </tr>
+     </tbody>
+ </table>
+{% endblock %}
